@@ -1,23 +1,26 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package adarsh.decimaltobinary;
+
+package adarsh.binarytodecimal;
 import java.util.Scanner;
 
-public class Input {
-    
-    public static void main(String[] args){
-    int numberModule,decimalNumber;
-    String binaryNumber = "";
-    Scanner input = new Scanner(System.in);
-    System.out.println("Enter a Decimal Number :");
-    decimalNumber = input.nextInt();
-    while(decimalNumber>0){
-        numberModule = decimalNumber%2;
-        binaryNumber = numberModule + "" + binaryNumber ;
-        decimalNumber = decimalNumber/2;
-    }
-    System.out.println("Binay Notation : "+binaryNumber);
-    }
+
+class Input
+{
+public static void main(String args[])
+        {
+            Scanner s=new Scanner(System.in);
+            
+            System.out.println("Enter a binary number:");
+            int n=s.nextInt();
+            
+            int decimal=0,p=0;
+            
+            while(n!=0)
+            {
+                decimal+=((n%10)*Math.pow(2,p));
+                n=n/10;
+                p++;
+            }
+            
+            System.out.println(decimal);
+        }
 }
