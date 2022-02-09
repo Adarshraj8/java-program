@@ -1,42 +1,36 @@
 
-package adarsh.binarytohex;
-import java.util.Scanner;
+package adarsh.binarytooctal;
+  import java.util.Scanner;
+
 
 public class Input {
-   
-   public static void main(String[] args)
-   {
-      int[] hexaDecimal = new int[1000];
-      int a = 1, b = 0, r, decimal = 0, binary;
-      Scanner sc = new Scanner(System.in);
-      System.out.print("Please enter binary number: ");
-      binary = sc.nextInt();
-      while(binary > 0)
-      {
-         r = binary % 2;
-         decimal = decimal + r * a;
-         a = a * 2;
-         binary = binary / 10;
-      }
-      a = 0;
-      while(decimal != 0)
-      {
-         hexaDecimal[a] = decimal % 16;
-         decimal = decimal / 16;
-         a++;
-      }
-      System.out.print("Equivalent hexadecimal value is: ");
-      for(b = a - 1; b >= 0; b--)
-      {
-         if(hexaDecimal[b] > 9)
-         {
-            System.out.print((char)(hexaDecimal[b] + 55) + "\n");
-         }
-         else
-         {
-            System.out.print(hexaDecimal[b] + "\n");
-         }
-      }
-      sc.close();
-   }
+    
+
+  public static void main(String[] args) {
+    System.out.println("Enter the binary number ");
+    Scanner s = new Scanner(System.in);
+   int binary = s.nextInt();
+    int octal = convertBinarytoOctal(binary);
+    System.out.println(binary + " in binary = " + octal + " in octal");
+  }
+
+  public static int convertBinarytoOctal(long binaryNumber) {
+    int octalNumber = 0, decimalNumber = 0, i = 0;
+
+    while (binaryNumber != 0) {
+      decimalNumber += (binaryNumber % 10) * Math.pow(2, i);
+      ++i;
+      binaryNumber /= 10;
+    }
+
+    i = 1;
+
+    while (decimalNumber != 0) {
+      octalNumber += (decimalNumber % 8) * i;
+      decimalNumber /= 8;
+      i *= 10;
+    }
+
+    return octalNumber;
+  }
 }
