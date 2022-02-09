@@ -1,36 +1,23 @@
-
-package adarsh.binarytooctal;
-  import java.util.Scanner;
-
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package adarsh.decimaltobinary;
+import java.util.Scanner;
 
 public class Input {
     
-
-  public static void main(String[] args) {
-    System.out.println("Enter the binary number ");
-    Scanner s = new Scanner(System.in);
-   int binary = s.nextInt();
-    int octal = convertBinarytoOctal(binary);
-    System.out.println(binary + " in binary = " + octal + " in octal");
-  }
-
-  public static int convertBinarytoOctal(long binaryNumber) {
-    int octalNumber = 0, decimalNumber = 0, i = 0;
-
-    while (binaryNumber != 0) {
-      decimalNumber += (binaryNumber % 10) * Math.pow(2, i);
-      ++i;
-      binaryNumber /= 10;
+    public static void main(String[] args){
+    int numberModule,decimalNumber;
+    String binaryNumber = "";
+    Scanner input = new Scanner(System.in);
+    System.out.println("Enter a Decimal Number :");
+    decimalNumber = input.nextInt();
+    while(decimalNumber>0){
+        numberModule = decimalNumber%2;
+        binaryNumber = numberModule + "" + binaryNumber ;
+        decimalNumber = decimalNumber/2;
     }
-
-    i = 1;
-
-    while (decimalNumber != 0) {
-      octalNumber += (decimalNumber % 8) * i;
-      decimalNumber /= 8;
-      i *= 10;
+    System.out.println("Binay Notation : "+binaryNumber);
     }
-
-    return octalNumber;
-  }
 }
